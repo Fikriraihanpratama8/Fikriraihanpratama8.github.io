@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIP Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        nav {
+            margin-bottom: 30px; /* Menambahkan margin bawah pada navbar */
+        }
+
+        .center-search {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .form-search {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        .search-wrapper {
+            display: inline-flex;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .search-input {
+            border: none;
+            border-radius: 20px;
+            padding: 10px 15px;
+            outline: none;
+            margin-left: 40px;
+        }
+
+        .search-btn {
+            border: none;
+            border-radius: 20px;
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .search-btn:hover {
+            background-color: #495057;
+        }
+
+        .cart-img {
+            width: 40px;
+            height: auto;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: 40px;
+        }
+
+        .account-logo {
+            width: 40px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        .carousel-image {
+            width: 85%;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .recommendation {
+            text-align:start;
+            margin-bottom: 20px;
+            padding-top: 40px;
+            margin-left: 108px;
+        }
+
+        .book-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            height: auto;
+        }
+
+        .book {
+            width: 15%;
+            margin-bottom: 30px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        
+        .book {
+        width: 15%;
+        margin-bottom: 30px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        height: 310px;
+        display: flex;
+        flex-direction:column;
+        justify-content: space-between;
+        }
+
+        .book img {
+            width: 100%;
+            height: 200px;
+        }
+
+        .book-title {
+        font-weight: bold;
+        margin-top: 10px;
+        overflow: hidden; /* Menyembunyikan teks yang melebihi batas kotak */
+        white-space: nowrap; /* Mencegah teks pindah ke baris baru */
+        text-overflow: ellipsis; /* Menampilkan elipsis (...) jika teks terpotong */
+        }
+
+
+        .book-price {
+            margin-top: 10px;
+        }
+
+        .img-fluid-small {
+        width: 50px;
+        height: auto;
+        }
+
+
+    </style>
+
+    
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/1165876da6.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">BIP Store</a>
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Kategori
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href=allitem.html>Semua Buku</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                    <li><a class="dropdown-item" href="kategori1.html">Komik & Novel Grafis</a></li>
+                    <li><a class="dropdown-item" href="kategori2.html">Fiksi Anak & Remaja</a></li>
+                    <li><a class="dropdown-item" href="diskon.html">Diskon</a></li>
+                </ul>
+            </div>
+            <div class="center-search">
+                <div class="search-wrapper">
+                    <form class="d-flex form-search" role="search">
+                        <input class="form-control search-input me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success search-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Search
+                        </button>
+                    </form>
+                </div>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href= Login.html >Masuk</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href= signup.html >Daftar</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <button class="btn btn-outline-dark" type="submit">
+                        <i class="bi-cart-fill me-1"></i>
+                        Keranjang
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="image/home1.png" class="d-block mx-auto carousel-image" alt="...">
+            </div>
+            <div class="carousel-item">
+                <a href="diskon.html">
+                    <img src="image/home2.png" class="d-block mx-auto carousel-image" alt="..."></a>
+            </div>
+            <div class="carousel-item">
+                <img src="image/home1.png" class="d-block mx-auto carousel-image" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="recommendation">
+        <h2>Rekomendasi Untukmu</h2>
+    </div>
+
+    <div class="container book-container">
+        <div class="book">
+            <a href="7.html"><img src="image/book-bumi.jpg" alt="Book 1"></a>
+            <div class="book-details">
+                <h5 class="book-title">Bumi</h5>
+                <p class="book-price">Rp 92.700</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="14.html"><img src="image/book-kisah-adab-teladan-rasulullah.jpg" alt="Book 2"></a>
+            <div class="book-details">
+                <h5 class="book-title">Kisah Adab-Adab Teladan Rasulullah Saw</h5>
+                <p class="book-price">Rp 120.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="4.html"><img src="image/martin-si-anak-magang.jpg" alt="Book 3"></a>
+            <div class="book-details">
+                <h5 class="book-title">Martin Si Anak Magang</h5>
+                <p class="book-price">Rp 79.200</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="16.html"><img src="image/Book-Keep-up-With-Us.jpg" alt="Book 4"></a>
+            <div class="book-details">
+                <h5 class="book-title">Keep Up With Us!</h5>
+                <p class="book-price">Rp 72.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="9.html"><img src="image/matahari.jpg" alt="Book 5"></a>
+            <div class="book-details">
+                <h5 class="book-title">Matahari</h5>
+                <p class="book-price">Rp 94.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="18.html"><img src="image/30-jam-lancar-membaca.jpg" alt="Book 6"></a>
+            <div class="book-details">
+                <h5 class="book-title">30 Jam Lancar Membaca</h5>
+                <p class="book-price">Rp 79.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="20.html"><img src="image/keajaiban-rukun-islam.jpg" alt="Book 7"></a>
+            <div class="book-details">
+                <h5 class="book-title">Keajaiban Rukun Islam/h5>
+                <p class="book-price">Rp 48.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="6.html"><img src="image/naruto-the-movie.jpg" alt="Book 8"></a>
+            <div class="book-details">
+                <h5 class="book-title">Naruto The Movie</h5>
+                <p class="book-price">Rp 48.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="3.html"><img src="image/black-clover-18.jpg" alt="Book 9"></a>
+            <div class="book-details">
+                <h5 class="book-title">Black Clover 18</h5>
+                <p class="book-price">Rp 32.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="21.html"><img src="image/paud-mewarnai-1.jpg" alt="Book 10"></a>
+            <div class="book-details">
+                <h5 class="book-title">Paud Mewarnai 1</h5>
+                <p class="book-price">Rp 32.000</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="24.html"><img src="image/kelinci-hitam.jpg" alt="Book 12"></a>
+            <div class="book-details">
+                <h5 class="book-title">Kelinci Hitam</h5>
+                <p class="book-price">Rp 62.100</p>
+            </div>
+        </div>
+        <div class="book">
+            <a href="12.html"><img src="image/komet.jpg" alt="Book 12"></a>
+            <div class="book-details">
+                <h5 class="book-title">Komet</h5>
+                <p class="book-price">Rp 88.000</p>
+            </div>
+        </div>
+        <a href="allitem.html" class="btn1">Lihat Semua</a>  
+    </div>
+
+        <!-- Footer -->
+        <footer class="foot">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 square">
+                        <div class="brand">Tentang Kami</div>
+                        <p class="about">BIP STORE adalah Bookstore untuk mengeksplorasi dunia literatur. Kami menyediakan berbagai macam buku-buku berkualitas <a href="about.html" class="b-footer">Selengkapnya.</a>
+                        </p>
+                    </div>
+                    <div class="col-lg-2 col-md-6 square">
+                        <div class="heading">Kategori</div>
+                        <ul class="p-list">
+                            <li><a href="kategori1.html" class="a-footer">Komik & Novel Grafis</a></li>
+                            <li><a href="kategori2.html" class="a-footer">Fiksi Anak & Remaja</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-2 col-md-6 square">
+                        <div class="heading">Lainnya</div>
+                        <ul class="l-list">
+                            <li><a href="index.html" class="a-footer">Home</a></li>
+                            <li><a href= "about.html" class="a-footer" >About</a></li>
+                            <li><a href="Login.html" class="a-footer">Masuk</a></li>
+                            <li><a href="signup.html" class="a-footer">Daftar</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-4 col-md-6 square">
+                        <div class="heading">Contact</div>
+                        <ul class="contact">
+                            <li><i class="c-footer" >Jl. Legian I No.17,Gn. Anyar, Kec. Gn. Anyar, Surabaya, Jawa Timur 60294</i> </li>
+                            <li><i class="c-footer">Oramedia@gmail.com</i></li>
+                            <li><i class="c-footer">(+1326) 90284432</i></li>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="social-media">
+                    <li><a href="https://www.facebook.com/ahmadadib.syaifulloh.7"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/backstreet.8989/"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://twitter.com/jokowi"><i class="fa-brands fa-twitter"></i></a></li>
+                </ul>
+            </div>
+            <div class="copy">&copy Copyright & Reserved 2024. <a href="https://www.instagram.com/backstreet.8989/">BIP Store</a></div>
+        </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+
